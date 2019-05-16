@@ -197,7 +197,7 @@ def train(model):
                 learning_rate=config.LEARNING_RATE,
                 epochs=10,
                 layers='heads')
-
+    model.save('modelo.h5')
 
 def color_splash(image, mask):
     """Apply color splash effect.
