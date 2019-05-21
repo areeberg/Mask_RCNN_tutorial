@@ -19,10 +19,10 @@ import matplotlib.pyplot as plt
 from matplotlib import patches,  lines
 from matplotlib.patches import Polygon
 import IPython.display
-
+import pdb
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../")
-
+#pdb.set_trace()
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
 from mrcnn import utils
@@ -54,6 +54,7 @@ def display_images(images, titles=None, cols=4, cmap=None, norm=None,
                    norm=norm, interpolation=interpolation)
         i += 1
     plt.show()
+
 
 
 def random_colors(N, bright=True):
@@ -98,6 +99,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     captions: (optional) A list of strings to use as captions for each object
     """
     # Number of instances
+
     N = boxes.shape[0]
     if not N:
         print("\n*** No instances to display *** \n")
@@ -165,6 +167,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     ax.imshow(masked_image.astype(np.uint8))
     if auto_show:
         plt.show()
+
 
 
 def display_differences(image,
@@ -356,6 +359,7 @@ def plot_overlaps(gt_class_ids, pred_class_ids, pred_scores,
     plt.ylabel("Predictions")
 
 
+
 def draw_boxes(image, boxes=None, refined_boxes=None,
                masks=None, captions=None, visibilities=None,
                title="", ax=None):
@@ -456,6 +460,8 @@ def draw_boxes(image, boxes=None, refined_boxes=None,
                 p = Polygon(verts, facecolor="none", edgecolor=color)
                 ax.add_patch(p)
     ax.imshow(masked_image.astype(np.uint8))
+
+
 
 
 def display_table(table):
