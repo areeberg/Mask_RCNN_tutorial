@@ -33,7 +33,9 @@ import json
 import datetime
 import numpy as np
 import skimage.draw
-
+import pdb
+import keras
+import h5py
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
 
@@ -41,6 +43,9 @@ ROOT_DIR = os.path.abspath("../../")
 sys.path.append(ROOT_DIR)  # To find local version of the library
 from mrcnn.config import Config
 from mrcnn import model as modellib, utils
+from keras.models import load_model
+from keras.models import Sequential, Model
+
 
 # Path to trained weights file
 COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
@@ -348,13 +353,13 @@ if __name__ == '__main__':
         weights_path = args.weights
 
     # Load weights
+    #pdb.set_trace()
     print("Loading weights ", weights_path)
+    pdb.set_trace()
     if args.weights.lower() == "coco":
         # Exclude the last layers because they require a matching
         # number of classes
-        model.load_weights(weights_path, by_name=True, exclude=[
-            "mrcnn_class_logits", "mrcnn_bbox_fc",
-            "mrcnn_bbox", "mrcnn_mask"])
+        model.load_weights(weights_path, by_name=True, exclude=["mrcnn_class_logits", "mrcnn_bbox_fc","mrcnn_bbox", "mrcnn_mask"])
     else:
         model.load_weights(weights_path, by_name=True)
 
